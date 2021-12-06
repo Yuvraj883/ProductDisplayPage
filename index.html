@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
+    
+    <link rel = "stylesheet" href="assets/styles.css">
+    <title>Shopper's Delight</title>
+</head>
+<body id="app">
+       <nav class ="navigation">
+           <span class ="nav-icon">
+               <img class="nav-img" src= "./assets/images/icon.jpeg">
+           </span>
+           <span class="nav-brand"><i>Shopper's Delight</i></span>
+           
+        </nav>
+        <div class ="cart button">MyCart ({{cart}}) </div>
+        <div class="product-display">
+            <div class ="product-container">
+            <div class="product-image">
+                <img v-bind:src="image" alt="Product Image">
+            </div>
+
+            <div class="product-info">
+                <h1>{{product}}</h1>
+                <p v-if="inStock">In Stock</p>
+                <p v-else>Out of stock</p>
+                <ul>
+                    <li v-for="details in detail">{{details}}</li>
+                </ul>
+                <div class="color-circle" v-for="variants in variant" :key="variant.id" :style="{backgroundColor: variant.color}" @mouseover="updateImage(variant.image)"></div>
+
+                <button class="button "
+                :class="{disabled:!inStock}"
+                :disabled="!inStock"
+                @click="addToCart">Add Item</button>
+                <button class="button" :class="{disabled:!cart}" :disabled ="!cart" @click="removeFromCart">Remove Item</button>
+
+            </div>
+        </div>
+        </div>
+        <script src = "main.js"></script>
+        <script >
+            const mountedApp = app.mount('#app')
+        </script>
+</body>
+</html>
