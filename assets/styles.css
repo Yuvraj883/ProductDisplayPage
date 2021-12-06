@@ -43,7 +43,15 @@ body {
 }
 .disabledButton {
     background-color: #d8d8d8;
+    border-color: black;
     cursor: not-allowed;
+    font-weight:bold;
+    font-size: 28px;
+    padding: 5px;
+    margin: 10px;
+    border-radius: .5rem;
+    color:whitesmoke;
+    border:2px solid;
   }
 
 .button{
