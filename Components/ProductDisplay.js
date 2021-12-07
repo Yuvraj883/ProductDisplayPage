@@ -20,9 +20,9 @@ app.component('product-display', {
 
         <div class="product-info">
             <h1>{{title}}</h1>
-            <p v-if="inStock>50">In Stock</p>
+            <p v-if="inStock>50" style="color:green">In Stock</p>
             <p v-else-if="inStock<=50 && inStock>0" style="color:red"><b>Hurry!!! only a few left</b></p>
-            <p v-else="inStock">Out of Stock</p>
+            <p v-else="inStock"><b>Out of Stock</b></p>
             <p>Shipping: {{shipping}}</p>
             <ul>
                 <li v-for="details in detail">{{details}}</li>
@@ -37,6 +37,9 @@ app.component('product-display', {
 
         </div>
     </div>
+    <reviews-list :reviews="reviews"></reviews-list>
+    <review-form @review-submitted="addReview()"></review-form>
+
 </div>`,
 data() {
     return {
@@ -50,7 +53,8 @@ data() {
         variant: [{ id: 1, color: '#B76E79', image: './assets/images/asr-1.jpg', quantity: 49 },
         { id: 2, color: '#FFD700', image: './assets/images/asr-2.jpg',quantity:100 },
         { id: 3, color: '#343d46', image: './assets/images/asr-3.jpg',quantity:0 }
-        ]
+        ],
+    reviews:[]
 
     }
 },
@@ -63,6 +67,9 @@ methods: {
     },
     updateVarient(index) {
         this.selectedVariant = index
+    },
+    addReview(review){
+this.reviews.push(review)
     }
 
 },

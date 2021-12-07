@@ -22,13 +22,13 @@
     <div class="cart button">MyCart ({{cart}}) </div>
 
     <product-display  :cart="cart" :premium="premium" @add-item="addToCart" @remove-item="removeFromCart"></product-display>
-
    <!-- imported App-->
     <script src="main.js"></script>
     <!--Imported ProductDisplay Component-->
-
     <script src = "./Components/ProductDisplay.js"></script>
-
+    <!--Import ProductReviewForm component-->
+    <script src ="./Components/ProductReviewForm.js"></script>
+<script src ="./Components/ReviewsList.js"></script>
     <script>
         const mountedApp = app.mount('#app')
     </script>
