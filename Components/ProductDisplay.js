@@ -37,8 +37,8 @@ app.component('product-display', {
 
         </div>
     </div>
-    <reviews-list :reviews="reviews"></reviews-list>
-    <review-form @review-submitted="addReview()"></review-form>
+    <reviews-list v-if="reviews.length" :reviews="reviews"></reviews-list>
+    <review-form @review-submitted="addReview"></review-form>
 
 </div>`,
 data() {
