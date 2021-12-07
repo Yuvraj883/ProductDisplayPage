@@ -21,7 +21,7 @@
     </nav>
     <div class="cart button">MyCart ({{cart}}) </div>
 
-    <product-display></product-display>
+    <product-display  :cart="cart" :premium="premium" @add-item="addToCart" @remove-item="removeFromCart"></product-display>
 
    <!-- imported App-->
     <script src="main.js"></script>

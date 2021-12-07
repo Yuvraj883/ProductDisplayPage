@@ -1,6 +1,15 @@
-
 app.component('product-display', {
-    
+    props:{
+        premium: {
+            type: Boolean,
+            required: true
+        },
+        cart:{
+            type: Int32Array,
+            required : true
+
+        }
+    },
     template:
     /*html*/
     ` <div class="product-display">
@@ -14,6 +23,7 @@ app.component('product-display', {
             <p v-if="inStock>50">In Stock</p>
             <p v-else-if="inStock<=50 && inStock>0" style="color:red"><b>Hurry!!! only a few left</b></p>
             <p v-else="inStock">Out of Stock</p>
+            <p>Shipping: {{shipping}}</p>
             <ul>
                 <li v-for="details in detail">{{details}}</li>
             </ul>
@@ -22,7 +32,7 @@ app.component('product-display', {
 
             <button class="button" :class="{disaledButton:!inStock}" :disabled="!inStock" @click="addToCart">Add
                 Item</button>
-            <button class="button" :class="{disabledButtom:!cart}" :disabled="!cart" @click="removeFromCart">Remove
+            <button class="button" :class="{disabledButtom:!cart}" :disabled="1>cart" @click="removeFromCart">Remove
                 Item</button>
 
         </div>
@@ -46,10 +56,10 @@ data() {
 },
 methods: {
     addToCart() {
-        this.cart += 1
+        this.$emit('add-item')
     },
     removeFromCart() {
-        this.cart -= 1
+        this.$emit('remove-item')
     },
     updateVarient(index) {
         this.selectedVariant = index
@@ -65,6 +75,12 @@ computed: {
     },
     inStock(){
         return this.variant[this.selectedVariant].quantity
+    },
+    shipping(){
+        if(this.premium){
+            return 'Free'
+        }
+        return '.99$'
     }
 
 }
