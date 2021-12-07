@@ -17,17 +17,21 @@
             <img class="nav-img" src="./assets/images/icon.jpeg">
         </span>
         <span class="nav-brand"><i>Shopper's Delight</i></span>
-        <product-display></product-display>
 
     </nav>
     <div class="cart button">MyCart ({{cart}}) </div>
+
+    <product-display></product-display>
+
    <!-- imported App-->
     <script src="main.js"></script>
+    <!--Imported ProductDisplay Component-->
+
+    <script src = "./Components/ProductDisplay.js"></script>
+
     <script>
         const mountedApp = app.mount('#app')
     </script>
-    <!--Imported ProductDisplay Component-->
-    <script src = "./Components/ProductDisplay.js"></script>
 </body>
 
 </html>
